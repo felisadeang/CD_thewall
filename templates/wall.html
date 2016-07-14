@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+        <title>The Wall</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="welcome">
+                <div id="welcomeleft">
+                    <h1>The Wall</h1>
+                    <h3>Messages and Comments</h3>
+                </div>
+                <div id="welcomeright">
+                    <form action='/logout' method='POST'>
+                        <input type="submit" name="logout" value="Logout" id="logout_button" class="btn btn-default navbar-btn">
+                    </form>
+                </div>
+            </div>
+            <div id="leftwrapper">
+                <div class="bodytitle">
+                    <h4>Messages:</h4>
+                </div>
+                <div class="bodyforms">
+                    {% for message in messages: %}<h5 id="messagename">{{ message['first_name'] }} {{ message['last_name'] }}'s message says: </h5>
+                    <p id="messagecontent">{{ message["message_content"] }}</p>
+                    <form action='/addcomment/{{ message['id'] }}' method='POST'>
+                        <p>Add a comment below:</p>
+                        <textarea class="form-control" name="addcomment"></textarea>
+                        <input type="submit" id="commentbutton" name="addcomment" value="Comment!" class="btn btn-default navbar-btn">
+                        {% for comment in comments: %}{% if message['id'] == comment["message_id"] %}
+                            <p class="makesmall">Comment(s):</p>
+                            <ul>
+                                <li class="makesmall">{{ comment["first_name"] }} has commented: {{ comment["comment_content"] }}</li>
+                        {% endif %}
+                        {% endfor %}
+                            <ul>
+                    </form>
+                    <hr>
+                        {% endfor %}
+                </div>
+            </div>
+            <div id="rightwrapper">
+                <div class="bodytitle">
+                    <h4>Add a message:</h4>
+                </div>
+                <div class="bodyforms">
+                    <form action='/makeMessage' name="add_message" method='POST'>
+                        <textarea class="form-control" name="add_message"></textarea>
+                        <input type="submit" name="add_message" value="Add message" class="btn btn-default navbar-btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

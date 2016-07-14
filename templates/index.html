@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+        <title>The Wall Login and Registration</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="welcome">
+                <div id="welcomeleft">
+                    <h1>The Wall</h1>
+                    <h3>Login and Registration</h3>
+                </div>
+                <div id="welcomeright">
+                    <form action='/logout' method='POST'>
+                        <input type="submit" name="logout" value="Logout" id="logout_button" class="btn btn-default navbar-btn">
+                    </form>
+                </div>
+            </div>
+            <div id="leftwrapper">
+                <div class="bodytitle">
+                    <h4>Returning user? Login</h4>
+                </div>
+                <div class="bodyforms">
+                    <form action='/login' method='POST'>
+                        <label for="email">Email: <input type="text" name="email" id="email" placeholder="sample@example.com"></label>
+                        <label for="password">Password: <input type="password" name="password" id="password" placeholder="*******"></label>
+                        <input type="submit" name="submit" value="Login" id="login_button" class="btn btn-default navbar-btn">
+                    </form>
+                    {% with messages = get_flashed_messages(category_filter=["login_error"]) %}
+                      {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                <li>{{message}}</li>
+                            </ul>
+                        </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div id="rightwrapper">
+                <div class="bodytitle">
+                    <h4>New? Register</h4>
+                </div>
+                <div class="bodyforms">
+                    <form action='/register' method='POST'>
+                        <label for="first_name">First Name: <input type="text" name="first_name" id="first_name" placeholder="First Name"></label>
+                        <label for="last_name">Last Name: <input type="text" name="last_name" id="last_name" placeholder="Last Name"></label>
+                        <label for="email">Email: <input type="text" name="email" id="email" placeholder="sample@example.com"></label>
+                        <label for="password">Password: <input type="password" name="password" id="password" placeholder="*******"></label>
+                        <label for="confirm_password">Confirm Password: <input type="password" name="confirm_password" id="confirm_password" placeholder="*******"></label>
+                        <input type="submit" name="submit" value="Register" id="register_button" class="btn btn-default navbar-btn">
+                    </form>
+                    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                      {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                <li>{{message}}</li>
+                            </ul>
+                        </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endwith %}
+
+                    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+                      {% if messages %}
+                        {% for message in messages %}
+
+                        <div class="alert alert-success" role="alert">
+                            <ul>
+                                <li>{{message}}</li>
+                            </ul>
+                        </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

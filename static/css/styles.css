@@ -1,0 +1,86 @@
+* {
+	padding: 0;
+	margin: 0;
+    /*border: 1px dotted red;*/
+}
+#wrapper {
+	width: 1070px;
+	margin: 0px auto;
+	padding: 5px;
+	overflow: hidden;
+	font-family: Helvetica, Verdana;
+	font-size: 11pt;
+    color: black;
+}
+#welcome {
+    width: inherit;
+    height: 150px;
+    margin-left: 30px;
+}
+#welcomeleft{
+    width: 900px;
+    display: inline-block;
+}
+#welcomeright {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+    padding-top: 10px;
+    height: 100px;
+}
+#leftwrapper {
+    width: 515px;
+    height: 1000px;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px dotted gray;
+    border-radius: 15px;
+    padding: 15px;
+	overflow-y: scroll;
+}
+#rightwrapper{
+    width: 515px;
+    height: 1000px;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px dotted gray;
+    border-radius: 15px;
+    padding: 15px;
+	overflow-y: scroll;
+}
+#register_button{
+    margin-left: 220px;
+}
+#messagename {
+	border: 1px solid gray;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #D2DADC;
+}
+#messagecontent{
+	margin-top: 15px;
+}
+.makesmall {
+	font-size: 9pt;
+}
+
+li {
+    list-style-type: none;
+}
+.bodytitle {
+    text-align: center;
+    margin: 5px;
+	padding: 15px;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+}
+.bodyforms {
+    margin-top: 20px;
+    padding-top: 20px;
+    height: 550px;
+
+}
+.bodyforms label {
+    display: block;
+}
